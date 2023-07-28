@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block header %}{% include 'header.html' %}{% endblock header %}  
+{% block banner %}  {% include 'banner.html' %}{% endblock banner %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+    <h1 class="text-center text text-capitalize mt-5 mb-5">profile update</h1>
+    <div class="row">
+      <div class="col-md-4 pavat">
+        <img src="/img/avatar.png" alt="" style="height: 150px;" >
+        <h5>Valentine</h5>
+        <hr>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'profile' %}">profile</a></li>
+          <li><a href="{% url 'profile_update' %}">profile update</a></li>
+          <li><a href="">password update</a></li>
+        </ul>
+      </div>
+      <div class="col-md-8 pform">
+        <form action="{% url 'profile_update' %}"  method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">first name</label>
+              <input type="text" name="full_name" class="form-control" value="{{userprof.first_name}}" id="exampleFormControlInput1" placeholder="">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label"> last name</label>
+              <textarea class="form-control" name="last name" value="{{userprof.last_name}}" id="exampleFormControlTextarea1" rows=""></textarea>
+            </div> 
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">phone</label>
+              <textarea class="form-control" name="phone" value="{{userprof.phone}}" id="exampleFormControlTextarea1" rows=""></textarea>
+            </div> 
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">address</label>
+              <textarea class="form-control" name="address" value="{{userprof.address}}" id="exampleFormControlTextarea1" rows=""></textarea>
+            </div> 
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">email</label>
+              <textarea class="form-control" name="email" value="{{userprof.email}}" id="exampleFormControlTextarea1" rows=""></textarea>
+            </div> 
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">upload image</label> <input type="file">
+              <textarea class="form-control" name="pix" id="exampleFormControlTextarea1" rows=""></textarea>
+            </div> 
+            <div class="mb-3">
+              <button class="btn btn-primary">update</button>
+            </div>
+        </form>
+      </div>
+    </div>
+    </h1>
+  </div>
+
+
+
+{% endblock content %}
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}
